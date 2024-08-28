@@ -1,4 +1,8 @@
 import * as THREE from 'three'
+import gsap from 'gsap'
+
+// Debug
+console.log( gsap );
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -89,7 +93,7 @@ const tick2 = () => {
 // tick2();
 
 
-// Animation // Method 2 / Time Elapsed 
+// Animation // Method 3 / Time Elapsed 
 const clock3 = new THREE.Clock();
 const tick3 = () => {
     
@@ -111,3 +115,20 @@ const tick3 = () => {
 }
 // tick3();
 
+
+// Animation // Method 4 / Greensock Animation Platform 
+gsap.to( mesh.position , { duration: 1 , delay: 1 , x: 2 });
+gsap.to( mesh.position , { duration: 1 , delay: 3 , x: -2 });
+
+const tick4 = () => {
+
+    // 
+    console.log( "tick4" );
+
+    // Necessary to render frame 
+    renderer.render( scene , camera );
+
+    // Necessary to update frame 
+    window.requestAnimationFrame( tick4 );
+}
+tick4();
